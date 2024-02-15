@@ -145,7 +145,7 @@ def main():
         signatures = get_pdf_signatures(uploaded_file)
 
         if not signatures:
-            st.warning('No signature detected.')
+            st.error('No signature detected', icon="🚨")
         else:
             st.success('Signature(s) detected:')
             for index, signature in enumerate(signatures, start=1):
