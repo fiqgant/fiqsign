@@ -96,6 +96,11 @@ def parse_pkcs7_signatures(signature_data: bytes):
 
 def get_pdf_signatures(filename):
     reader = PdfReader(filename)
+    
+    if reader.get_fields() is None:
+        st.warning("No signature fields found.")
+        return []
+
     fields = reader.get_fields().values()
     signature_field_values = [
         f.value for f in fields if f.field_type == '/Sig']
